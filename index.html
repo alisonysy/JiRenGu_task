@@ -50,18 +50,18 @@
 							<span class="welcome">Hello
 								<span class="triangle"> </span>
 							</span>
-							<h1>翁小妹</h1>
-							<p>前端开发工程师</p>
+							<h1>Alison W.</h1>
+							<p>Front-end developer</p>
 							<hr>
 							<dl>
-								<dt>年龄</dt>
+								<dt>Age</dt>
 								<dd>24</dd>
-								<dt>所在城市</dt>
-								<dd>GZ</dd>
-								<dt>邮箱</dt>
-								<dd>ali****@***.com</dd>
-								<dt>手机</dt>
-								<dd>136********</dd>
+								<dt>City</dt>
+								<dd>GuangZhou</dd>
+								<dt>Email</dt>
+								<dd>452592978@qq.com</dd>
+								<dt>Tel.</dt>
+								<dd>1363219380</dd>
 							</dl>
 					</div>
 				</div>
@@ -94,41 +94,91 @@
 							</a>
 							
 						</footer>
-					
-				
 			</div>
-			<a href="#" class="button">Download</a>
-			<p>
-				I'm a Front-end beginner.<br>
-				What is a <ins>transparent</ins> element. <br>
-				I am a graduate from UoA.
+			<p class="downloadResume-wrapper" >
+				<a href="./resumeSample_task9code.txt" target="_blank" class="downloadResume" download>下载简历</a>
+			</p>
+			
+			<p class="selfIntro">
+					With experience in customer service and digital marketing, as well as strong data processing skills gained from university, I am passionate about problem solving and gaining useful insights for clients and markets. Being an accountable team member in both work and study, I possess strong communication and presentation skills. I am good at multi-tasking, as I enrolled more courses than other students along with two jobs right before graduation.
+				
 			</p>
 		</main>
-		<section>
+		<section class="skills">
 			<h2>Skills</h2>
-			<ol>
-				<li>HTML 5 &amp; CSS 3</li>
-				<li>JavaScript</li>
-				<li>jQuery</li>
-				<li>Vue</li>
-				<li>React</li>
-				<li>HTTP</li>
+			<ol class="clearfix">
+				<li>
+					<h3>HTML 5 &amp; CSS 3</h3>
+					<div class="progressBar">
+						<div class="progress" style="width:40%;"></div>
+					</div>
+				</li>
+				<li>
+					<h3>JavaScript</h3>
+					<div class="progressBar">
+							<div class="progress" style="width:8%;"></div>
+						</div>
+				</li>
+				<li>
+					<h3>jQuery</h3>
+					<div class="progressBar">
+							<div class="progress" style="width:0%;"></div>
+						</div>
+				</li>
+				<li>
+					<h3>Vue</h3>
+					<div class="progressBar">
+							<div class="progress" style="width:0%;"></div>
+					</div>
+				</li>
+				<li>
+					<h3>React</h3>
+					<div class="progressBar">
+							<div class="progress" style="width:0%;"></div>
+					</div>
+				</li>
+				<li>
+					<h3>HTTP</h3>
+					<div class="progressBar">
+							<div class="progress" style="width:40%;"></div>
+					</div>
+				</li>
 			</ol>
 		</section>
-		<section>
+		<section class="portfolio">
 			<h2>Portfolio</h2>
 			<nav>
-				<ol>
-					<li>All</li>
-					<li>框架</li>
-					<li>原生JS&amp;CSS</li>
+				<ol class="clearfix">
+					<li id="portfolio1">All</li>
+					<li id="portfolio2">框架</li>
+					<li id="portfolio3">原生JS&amp;CSS</li>
 				</ol>
+				<div id="portfolioBar" class="bar state-1">
+					<div class="bar-inner"></div>
+				</div>
 			</nav>
+			<script>
+				portfolio1.onclick= function(){
+					portfolioBar.className = 'bar state-1'
+				}
+				portfolio2.onclick= function(){
+					portfolioBar.className = 'bar state-2'
+				}
+				portfolio3.onclick= function(){
+					portfolioBar.className = 'bar state-3'
+				}
+			</script>
 
-			<div class="jobs">
-				<div class="big"></div>
-				<div class="small"></div>
-				<div class="small"></div>
+			<div class="works" style="height:597px;">
+				<div class="big" style="top:0; left:0;">
+					<img src="./img/big.jpg" alt="作品1">
+				</div>
+				<div class="small" style="top:0; left:645px;">
+					<img src="./img/topRight.jpg" alt="作品2">
+				</div>
+				<div class="small" style="top:298px; left:645px;">
+					<img src="./img/bottomLeft.jpg" alt="作品3">
+				</div>
 			</div>
 		</section>
 		

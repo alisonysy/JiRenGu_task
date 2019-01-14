@@ -1,0 +1,18 @@
+<iframe src="https://www.baidu.com" width=600 frameborder="0"></iframe>
+		<form action="" method="POST" id="haha">
+			<input type="text" >
+			
+			<input type="submit" value="submit">
+		</form>
+		<a href="">link</a>
+
+		<select name="group" form="haha" >
+				<option value="1" selected>group1</option>
+				<option value="2" label="what">group2</option>
+				<option value="3">group3</option>
+				<option value="4">group4</option>
+		</select>
+		<textarea name="textarea" id="why" form="haha" minlength="10"
+		style="resize:none;" cols="10" rows="5"></textarea>
+		
+

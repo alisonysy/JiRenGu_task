@@ -1,0 +1,47 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+}
+
+main{
+  text-align: center;
+}
+
+#main{
+  display:inline-block;
+  
+}
+
+kbd{ /*此处的kbd是一个元素 not the var*/
+  background: #fbede3;
+  width: 4em;
+  height: 4em;
+  display: inline-block;
+  margin:5px;
+  text-transform: uppercase;
+  position: relative;
+  box-shadow: 2px 1px 8px 1px rgba(0,0,0,0.45);
+}
+
+kbd > button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+
+kbd:hover > button{
+  display: inline-block;
+}
+
+#main > div:nth-child(2){
+  margin-left: 2em;
+}
+
+#main>div:nth-child(3){
+  margin-left: 4em;
+}

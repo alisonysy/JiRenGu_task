@@ -89,10 +89,13 @@
                 var img2=button2.previousSibling
                 var getClick = button2['id']
                 var userInput = prompt('New website')
-                webs[getClick] = userInput // webs changed
-                img2.src = 'http://' + userInput + '/favicon.ico'
-                img2.onerror=function(iconFail){
-                iconFail.target.src='//i.loli.net/2019/01/17/5c4034103d394.png'
+                
+                if(userInput){
+                  webs[getClick] = userInput // webs changed
+                  img2.src = 'http://' + userInput + '/favicon.ico'
+                  img2.onerror=function(iconFail){
+                    iconFail.target.src='//i.loli.net/2019/01/17/5c4034103d394.png'
+                    }
                 }
                 localStorage.setItem('newWeb',JSON.stringify(webs))
               }

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>my navigation</title>
+    <link rel="stylesheet" href="./style.css">
+    <body>
+      <header></header>
+      <main>
+        
+        <div id="main" class="wrapper">
+        </div>
+      </main>
+      <footer></footer>
+      <script>
+        //1. initialise data
+        var hashA = init()
+        var keys = hashA['keys']
+        var webs = hashA['webs']
+ 
+        //2. generate keyboard
+        //go thru keys and generate kbd tags
+        generateKeyboard(keys, webs)
+
+        //3.listen to user input
+        listenToInput(webs)
+        
+
+        //no need to look down
+
+        function init(){
+          var keys = {
+            0:['q','w','e','r','t','y','u','i','o','p'],
+            1:['a','s','d','f','g','h','j','k','l'],
+            2:['z','x','c','v','b','n','m'],
+            length:3
+          }
+          var webs ={
+            g:'google.com',
+            w:'weibo.com',
+            e:'developer.mozilla.org',
+            b:'baidu.com',
+            t:'taobao.com',
+            y:'youtube.com',
+            v:'v.qq.com',
+            i:'iqiyi.com',
+            j:'xiedaimala.com',
+            p:'pinterest.com',
+            a:'auckland.ac.nz',
+            m:'sm.ms',
+            s: 'portal.shadowsocks.nu',
+            d: 'dribbble.com',
+            c: 'creativemarket.com',
+            z: 'zhihu.com',
+            x:'compressjpeg.com',
+            q: 'css-tricks.com',
+            u:'uigradients.com'
+          }
+          
+          var websInLocalStorage = getFromLocalStorage('newWeb')
+          //取出localstorage中的newWeb对应的webs, get the JSON code into a function which we won't change
+          if(websInLocalStorage) {
+            webs = websInLocalStorage
+          }
+          return {
+            "keys":keys,
+            "webs":webs
+          }
+        }
+          function getFromLocalStorage(name){
+            return JSON.parse(localStorage.getItem(name) ||'null')
+          }
+          function tag(tagName, attributes){
+            return  document.createElement(tagName)
+          }
+          function createSpan(textContent){
+            var iconSpan = tag('span')
+            iconSpan.textContent=textContent
+            iconSpan.className='iconName'
+            return iconSpan
+          }
+          function createButton1(id){
+            var createButton = tag('button')
+              createButton.textContent = 'E'
+              createButton.id=id
+              createButton.onclick = function(clickButton){
+                var button2 = clickButton['target']
+                var img2=button2.previousSibling
+                var getClick = button2['id']
+                var userInput = prompt('New website')
+                webs[getClick] = userInput // webs changed
+                img2.src = 'http://' + userInput + '/favicon.ico'
+                img2.onerror=function(iconFail){
+                iconFail.target.src='//i.loli.net/2019/01/17/5c4034103d394.png'
+                }
+                localStorage.setItem('newWeb',JSON.stringify(webs))
+              }
+            return createButton
+          }
+
+          function createImg(domain){
+            var webIcon=tag('img')
+              if (domain){
+                webIcon.src = 'http://' + domain + '/favicon.ico'
+              }else {
+                webIcon.src='//i.loli.net/2019/01/17/5c4034105815b.png'
+              }
+              webIcon.onerror = function(iconFail){
+                iconFail.target.src='//i.loli.net/2019/01/17/5c4034103d394.png'
+              }
+              return webIcon
+          }
+
+          function generateKeyboard(keys, webs){
+            for(var index=0; index<keys['length'];index++){
+            var createDiv = tag('div')
+            createDiv.className='rowAll'
+            
+            main.appendChild(createDiv)
+            
+            var row=keys[index] // first arr, second arr and third
+          
+              for(var index2=0;index2<row['length'];index2++){
+                
+                var iconSpan = createSpan(row[index2])
+                
+                var createButton =createButton1(row[index2])
+                
+                var webIcon=createImg(webs[row[index2]])
+
+                var ekbd=tag('kbd')
+                ekbd.appendChild(iconSpan)
+
+                ekbd.className = 'keyName'
+                ekbd.appendChild(webIcon)
+                ekbd.appendChild(createButton)
+
+                createDiv.appendChild(ekbd)
+              }
+            }
+          }
+        
+          function listenToInput(webs){
+            document.onkeypress=function(whatUserType){
+              var type=whatUserType['key']
+              var website = webs[type]
+            
+              //location.href = 'http://' + website
+              window.open('http://'+website, '_blank')
+            }
+          }
+        
+
+      </script>
+    </body>
+  </head>
+</html>

@@ -1,0 +1,86 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background: wheat url('./background-min.jpg') no-repeat center center;
+  background-size: cover;
+  
+}
+
+
+main{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#main{
+  display:inline-block;
+  background: rgba(255,255,255,0.4);
+  border-radius: 20px;
+}
+
+#main > div:nth-child(2){
+  margin-left: -22px;
+}
+
+#main>div:nth-child(3){
+  margin-left: -80px;
+}
+
+.rowAll {
+  margin: 20px;
+}
+
+.keyName{
+  width:50px;
+  height:40px;
+  background: linear-gradient(to bottom, #292929 0%, #111111 100%);
+  border:1px solid #373737;
+  color: #c5c5c5;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px #1a1b1c, 0 0 0 2px #1f2020, 0 3px 0 2px #080808;
+  position: relative;
+  font-size: 16px;
+  font-family: Helvetica;
+  display: inline-block;
+  margin: 0 10px;
+  text-transform: uppercase;
+}
+
+.keyName .iconName{
+  position: absolute;
+  left: 4px;
+  top:2px;
+}
+
+.keyName > img{
+  width:16px;
+  height: 16px;
+  position: absolute;
+  left:6px;
+  bottom: 2px;
+}
+
+
+.keyName > button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+
+.keyName:hover > button{
+  display: inline-block;
+  font-size: 12px;
+  color: #c8f5ee;
+  background: none;
+  border:none;
+  right:5px;
+  bottom: 2px;
+}
+

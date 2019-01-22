@@ -3,7 +3,9 @@
 	<head>
 		<title>Alison Resume</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" href="./loading.css">
 		<link rel="stylesheet" href="./a.css">
+		
 		<script src="//at.alicdn.com/t/font_1013421_tv1obcvr2em.js"></script>
 		<style type="text/css">
 			.icon {
@@ -12,22 +14,40 @@
 				 fill: currentColor;
 				 overflow: hidden;
 			}
+			
 	</style>
 	</head>
 	<body>
-			
-		<div class="topNavBar clearfix">
+		<div id="welInterface" class="welInterface active">
+				<div class="loading"></div>
+		</div>
+		
+		<div id="stickyBar" class="topNavBar clearfix">
 			<div class="topNavBar-inner clearfix">
 				<a href="" class="logo" alt="logo" style="float:left">
 					<span class="rs" >RS</span>
 					<span class="card">card</span>
 				</a> 
-				<nav style="float:right">
+				<nav class="menu" style="float:right">
 					<ul >
-							<li><a href="">关于</a></li>
-							<li><a href="">技能</a></li>
-							<li><a href="">作品</a></li>
-							<li><a href="">博客</a></li>
+							<li><a href="#siteAbout">关于</a></li>
+							<li><a href="#siteSkills">技能</a></li>
+							<li>
+								<a href="#siteWorks">作品</a>
+								<ul class="submenu">
+									<li class="">a</li>
+									<li class="">b</li>
+									<li class="">c</li>
+								</ul>
+							</li>
+							<li>
+								<a  href="">博客</a>
+								<ul class="submenu">
+										<li class="">a</li>
+										<li class="">b</li>
+										<li class="">c</li>
+								</ul>
+							</li>
 							<li><a href="">日历</a></li>
 							<li><a href="">联系方式</a></li>
 							<li><a href="">其他</a></li>
@@ -41,7 +61,7 @@
 		</div>
 	
 		<main>
-			<div class="userCard">
+			<div id="siteAbout" class="userCard">
 				<div class="pictureAndText clearfix">
 					<div class="picture">
 						<img src="./img/profile.jpg" width="299" height="347" alt="profilePic">
@@ -96,7 +116,7 @@
 						</footer>
 			</div>
 			<p class="downloadResume-wrapper" >
-				<a href="./resumeSample_task9code.txt" target="_blank" class="downloadResume" download>下载简历</a>
+				<a href="./resumeSample_task9code.txt" target="_blank" class="downloadResume" download>Download Resume</a>
 			</p>
 			
 			<p class="selfIntro">
@@ -104,7 +124,7 @@
 				
 			</p>
 		</main>
-		<section class="skills">
+		<section id="siteSkills" class="skills">
 			<h2>Skills</h2>
 			<ol class="clearfix">
 				<li>
@@ -145,7 +165,7 @@
 				</li>
 			</ol>
 		</section>
-		<section class="portfolio">
+		<section id="siteWorks" class="portfolio">
 			<h2>Portfolio</h2>
 			<nav>
 				<ol class="clearfix">
@@ -181,6 +201,40 @@
 				</div>
 			</div>
 		</section>
-		
+		<script>
+			setTimeout(function(){
+				welInterface.classList.remove('active')
+			},2000)
+			
+			window.onscroll = function(scrolling){
+				if (window.scrollY>0){
+					stickyBar.classList.add('stickyBar')
+				}else{
+					stickyBar.classList.remove('stickyBar')
+				}
+			}
+
+			let liTags = document.querySelectorAll('nav.menu > ul > li')
+			for (let i = 0; i<liTags.length;i++){
+				liTags[i].onmouseenter = function(x){
+					x.currentTarget.classList.add('active')
+				}
+				liTags[i].onmouseleave = function(x){
+					x.currentTarget.classList.remove('active')
+				}
+			}
+
+			let aTags = document.querySelectorAll('nav.menu>ul>li>a')
+			for(let i=0;i<aTags.length;i++){
+				aTags[i].onclick=function(x){
+					x.preventDefault()
+					let a = x.currentTarget
+					let href = a.getAttribute('href')
+					let element = document.querySelector(href)
+					let top = element.offsetTop
+					window.scrollTo(0,top-80)
+				}
+			}
+		</script>
 	</body>
 </html>

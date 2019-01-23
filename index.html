@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" href="./loading.css">
 		<link rel="stylesheet" href="./a.css">
-		
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		<script src="//at.alicdn.com/t/font_1013421_tv1obcvr2em.js"></script>
 		<style type="text/css">
 			.icon {
@@ -28,7 +28,7 @@
 					<span class="rs" >RS</span>
 					<span class="card">card</span>
 				</a> 
-				<nav class="menu" style="float:right">
+				<nav class="menu">
 					<ul >
 							<li><a href="#siteAbout">关于</a></li>
 							<li><a href="#siteSkills">技能</a></li>
@@ -61,7 +61,7 @@
 		</div>
 	
 		<main>
-			<div id="siteAbout" class="userCard">
+			<div data-x id="siteAbout" class="userCard">
 				<div class="pictureAndText clearfix">
 					<div class="picture">
 						<img src="./img/profile.jpg" width="299" height="347" alt="profilePic">
@@ -124,48 +124,48 @@
 				
 			</p>
 		</main>
-		<section id="siteSkills" class="skills">
+		<section data-x id="siteSkills" class="skills">
 			<h2>Skills</h2>
 			<ol class="clearfix">
 				<li>
 					<h3>HTML 5 &amp; CSS 3</h3>
 					<div class="progressBar">
-						<div class="progress" style="width:40%;"></div>
+						<div class="progress" style="width:30%"></div>
 					</div>
 				</li>
 				<li>
 					<h3>JavaScript</h3>
 					<div class="progressBar">
-							<div class="progress" style="width:8%;"></div>
+							<div class="progress" style="width:20%"></div>
 						</div>
 				</li>
 				<li>
 					<h3>jQuery</h3>
 					<div class="progressBar">
-							<div class="progress" style="width:0%;"></div>
+							<div class="progress" style="width:0%"></div>
 						</div>
 				</li>
 				<li>
 					<h3>Vue</h3>
 					<div class="progressBar">
-							<div class="progress" style="width:0%;"></div>
+							<div class="progress" style="width:0%"></div>
 					</div>
 				</li>
 				<li>
 					<h3>React</h3>
 					<div class="progressBar">
-							<div class="progress" style="width:0%;"></div>
+							<div class="progress" style="width:0%"></div>
 					</div>
 				</li>
 				<li>
 					<h3>HTTP</h3>
 					<div class="progressBar">
-							<div class="progress" style="width:40%;"></div>
+							<div class="progress" style="width:10%"></div>
 					</div>
 				</li>
 			</ol>
 		</section>
-		<section id="siteWorks" class="portfolio">
+		<section data-x id="siteWorks" class="portfolio">
 			<h2>Portfolio</h2>
 			<nav>
 				<ol class="clearfix">
@@ -201,18 +201,53 @@
 				</div>
 			</div>
 		</section>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
 		<script>
 			setTimeout(function(){
 				welInterface.classList.remove('active')
-			},2000)
+			},100)
 			
-			window.onscroll = function(scrolling){
+			setTimeout(function(){
+				scrollHelp();
+			},1000)
+
+			let specialTags = document.querySelectorAll('[data-x]')
+			for (let i=0;i<specialTags.length;i++){
+				specialTags[i].classList.add('offset')
+			}
+
+			window.onscroll = function(x){
 				if (window.scrollY>0){
 					stickyBar.classList.add('stickyBar')
 				}else{
 					stickyBar.classList.remove('stickyBar')
 				}
+				//console.log(window.scrollY)
+				scrollHelp();
 			}
+
+			function scrollHelp(){
+					let specialTags = document.querySelectorAll('[data-x]')
+					let minIndex = 0
+					for (let i=0;i<specialTags.length;i++){
+						if(Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)){
+							minIndex = i;
+						}
+					}
+					specialTags[minIndex].classList.remove('offset');
+					for (let i=0;i<specialTags.length;i++){
+						specialTags[i].classList.remove('active')
+					}
+					specialTags[minIndex].classList.add('active')
+					let id = specialTags[minIndex].id
+					let a = document.querySelector('a[href="#'+id+'"]') //how to name css selectors
+					let li = a.parentNode
+					let broAndI = li.parentNode.children
+					for(let i=0;i<broAndI.length;i++){
+						broAndI[i].classList.remove('highlight')
+					}
+					li.classList.add('highlight')
+				}
 
 			let liTags = document.querySelectorAll('nav.menu > ul > li')
 			for (let i = 0; i<liTags.length;i++){
@@ -225,16 +260,55 @@
 			}
 
 			let aTags = document.querySelectorAll('nav.menu>ul>li>a')
+			function animate(time){
+				requestAnimationFrame(animate);
+				TWEEN.update(time);
+			}
+			requestAnimationFrame(animate);
+
 			for(let i=0;i<aTags.length;i++){
 				aTags[i].onclick=function(x){
 					x.preventDefault()
 					let a = x.currentTarget
 					let href = a.getAttribute('href')
 					let element = document.querySelector(href)
+					//console.log(element);
 					let top = element.offsetTop
-					window.scrollTo(0,top-80)
+
+					let currentTop = window.scrollY
+					let targetTop = top - 80
+					let s = targetTop - currentTop;
+					var coords = {y:currentTop};
+					var t = Math.abs((s/100)*400) //it scrolls 100px in 0.3s
+					if(t>1200){t = 1200};
+					var tween = new TWEEN.Tween(coords)
+						.to ({y:targetTop},t)
+						.easing(TWEEN.Easing.Back.InOut)
+						.onUpdate(function() {
+							window.scrollTo(0,coords.y)
+						})
+						.start();
+
+						/* the following code is primitive version for scrolling animation:
+					let n = 25 // how many times it moves;
+					let t = 500 / n //the frequency it moves
+					let currentTop = window.scrollY
+					let targetTop = top - 80
+					let s = (targetTop -currentTop) / n
+					let i = 0;
+					console.log(targetTop + ' ' + currentTop + ' ' + n + ' '+s)
+					let id = setInterval(() => {
+						if(i===n){
+							window.clearInterval(id)
+							return 
+						}
+						i = i+ 1;
+						window.scrollTo(0, currentTop + s * i)
+					}, t);*/
 				}
 			}
+
+
 		</script>
 	</body>
 </html>

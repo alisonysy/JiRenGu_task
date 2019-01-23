@@ -54,6 +54,7 @@ a{
 .topNavBar nav {
   padding-top: 3px;
   padding-bottom: 3px;
+  float:right
   
 }
 
@@ -112,7 +113,8 @@ a{
   cursor: pointer;
 }
 
-.topNavBar nav > ul > li.active >a::after{
+.topNavBar nav > ul > li.active >a::after,
+.topNavBar nav > ul > li.highlight >a::after{
   content:'';
   display: block;
   position: absolute;
@@ -149,6 +151,18 @@ a{
 .topNavBar .logo .card{
   color:#9a9da2;
 }
+
+[data-x].offset{
+  transform:translateY(100px);
+}
+
+[data-x] {
+  transform: translateY(0);
+  transition:all 1s;
+}
+
+
+
 
 .banner {
   background-image: url(./img/background.jpg); 
@@ -357,15 +371,23 @@ section.skills .progressBar {
   background:#fae1e1;
   border-radius: 2px;
   margin: 4px 0px 40px; 
-  
+  overflow:hidden;
 }
+
+section.skills.offset .progressBar>.progress{
+  transform: translateX(-200%);
+}
+
 
 section.skills .progressBar > .progress{
   height: 100%;
   background: #e6686a;
-  width:70%;
   border-radius: 2px;
+  transform: translateX(0);
+  transition: all 2s;
 }
+
+
 
 section.portfolio {
   text-align: center;

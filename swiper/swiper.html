@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestField</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="swiper.css">
+  </head>
+  <body>
+    <div class="win">
+      <div class="wrapper">
+        <div id="img1"></div>
+        <div id="img2"></div>
+        <div id="img3"></div>
+        <div id="img4"></div>
+      </div>
+    </div>
+    <div id="buttons">
+      <span>Image1</span>
+      <span>Image2</span>
+      <span>Image3</span>
+      <span>Image4</span>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+    var buttons = $('#buttons > span');
+    var n = 0;
+    var timer;
+    
+      $(buttons).click(function(){  //click to make the transformation happen;
+        var index= $(buttons).index(this); //.index() with no arguments will return the position of the first element within the matched set in relation to its siblings
+        $('.wrapper').css("transform", function(){
+          return "translate(-"+ 500*index +"px)" ;
+        })
+        n = index;
+        buttons.eq(index).addClass('deco')
+          .siblings('.deco').removeClass('deco'); //add class to the current ele and then move on to its siblings
+      })
+  
+    function userClick(){
+      buttons.eq(n%buttons.length).trigger('click')
+      .addClass('deco').siblings('.deco').removeClass('deco')
+    }
+
+    timer = setTimer();
+    function setTimer(){
+      return setInterval(() => {
+      n +=1;
+      userClick();
+    }, 1500);
+    }
+    
+    $('.win').on('mouseover',function(){
+      window.clearInterval(timer)
+    })
+    $('.win').on('mouseleave',function(){
+      setTimer();
+    })
+    
+  
+    
+    
+    
+    </script>
+  </body>
+</html>

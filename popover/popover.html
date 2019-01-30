@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Popover</title>
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div id="wrapper">
+      <button>Click to show popover</button>
+      <div id="popover" class=""><p>'m the popover.</p></div>
+    </div>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script>
+      var $button = $('#wrapper > button');
+      $button.on('click',function(){
+        if($('#popover').hasClass('active')){
+          $('#popover').removeClass('active')
+        }else{
+          $('#popover').addClass('active')
+          console.log('I been clicked')
+          setTimeout(() => {
+            $(document).one('click',function(){
+            $('#popover').removeClass('active')
+            console.log('ive been removed')
+          })
+          }, 0);
+        }
+      })
+
+      $('#popover').on('click',function(q){
+        q.stopPropagation();
+      })
+
+      /*document.addEventListener('click',function(){
+        console.log('ive been notified of being clicked')
+      })*/
+    </script>
+  </body>
+</html>

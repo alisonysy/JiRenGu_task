@@ -45,10 +45,9 @@
       this.model.fetch()
       .then((messages)=>{
         let array = messages.map((i)=>{return i.attributes});
-        console.log(array);
         array.forEach((item)=>{
           let li = document.createElement('li');
-          li.innerText = `${item.name}:${item.words}`;
+          li.innerText = `${item.name}: ${item.words}`;
           this.messageList.appendChild(li);
         })
       });

@@ -500,3 +500,16 @@ section.message > ol > li{
 section.message > #postMessage{
   color:#3d4451;
 }
+
+section.message > #postMessage > input[type=text]{
+  border: 0.5px solid #ddd;
+  padding:3px;
+}
+
+section.message > #postMessage > input[type=submit]{
+  color:#fff;
+  background-color:#e06567;
+  border:none;
+  padding:5px;
+  cursor: pointer;
+}

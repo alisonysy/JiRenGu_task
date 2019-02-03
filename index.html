@@ -4,6 +4,7 @@
 		<title>Alison Resume</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" href="./loading.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/css/swiper.min.css">
 		<link rel="stylesheet" href="./a.css">
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		<script src="//at.alicdn.com/t/font_1013421_tv1obcvr2em.js"></script>
@@ -14,7 +15,6 @@
 				 fill: currentColor;
 				 overflow: hidden;
 			}
-			
 	</style>
 	</head>
 	<body>
@@ -166,7 +166,9 @@
 			</ol>
 		</section>
 		<section data-x id="siteWorks" class="portfolio">
+			
 			<h2>Portfolio</h2>
+			<!--original nav bar
 			<nav>
 				<ol class="clearfix">
 					<li id="portfolio1">All</li>
@@ -188,20 +190,62 @@
 					portfolioBar.className = 'bar state-3'
 				}
 			</script>
+			-->
 
-			<div class="works" style="height:597px;">
-				<div class="big" style="top:0; left:0;">
-					<img src="./img/big.jpg" alt="作品1">
+			<div class="swiper-container">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+						<!-- Slides -->
+						<img src="works/myNav.png" class="swiper-slide">
+						<img src="works/asMyCanvas.png" class="swiper-slide">
+						<img src="works/slide.png" class="swiper-slide">
 				</div>
-				<div class="small" style="top:0; left:645px;">
-					<img src="./img/topRight.jpg" alt="作品2">
-				</div>
-				<div class="small" style="top:298px; left:645px;">
-					<img src="./img/bottomLeft.jpg" alt="作品3">
-				</div>
+				<!-- If we need pagination -->
+				<div class="swiper-pagination"></div>
 			</div>
+			<!-- If we need navigation buttons -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</section>
+		<section class="message">
+			<h2>Comments</h2>
+			<ol id="messageList">
+			</ol>
+			<form id="postMessage" style="width:700px; margin:50px auto;">
+				<label for="">Name</label>
+				<input type="text" name="name">
+				<label for="">Comment</label>
+				<input type="text" name="content">
+				<input type="submit" value="Leave a comment">
+			</form>
 		</section>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js"></script>
+		<script>
+		var mySwiper = new Swiper ('.swiper-container', {
+			// Optional parameters
+			direction: 'horizontal',
+			loop: true,
+
+			// If we need pagination
+			pagination: {
+				el: '.swiper-pagination',
+			},
+
+			// Navigation arrows
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+				hideOnClick:true,
+			},
+
+			autoplay:{
+				delay: 3000,
+				disableOnInteraction:false,
+			},
+  	})
+		</script>
 		<script>
 			setTimeout(function(){
 				welInterface.classList.remove('active')
@@ -273,13 +317,16 @@
 					let href = a.getAttribute('href')
 					let element = document.querySelector(href)
 					//console.log(element);
-					let top = element.offsetTop
+					let top = element.offsetTop 
+					//offsetTop returns the distance of the current element to its offsetParent node's top
+					//its offsetParent node is the element's closest positioned containing element, 
+					//i.e. whose css declares position:relative or position:absolute
 
 					let currentTop = window.scrollY
 					let targetTop = top - 80
 					let s = targetTop - currentTop;
 					var coords = {y:currentTop};
-					var t = Math.abs((s/100)*400) //it scrolls 100px in 0.3s
+					var t = Math.abs((s/100)*400) //it scrolls 100px in 0.4s
 					if(t>1200){t = 1200};
 					var tween = new TWEEN.Tween(coords)
 						.to ({y:targetTop},t)
@@ -307,8 +354,7 @@
 					}, t);*/
 				}
 			}
-
-
 		</script>
+		<script src="./message.js"></script>
 	</body>
 </html>

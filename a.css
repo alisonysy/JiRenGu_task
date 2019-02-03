@@ -421,8 +421,6 @@ section.portfolio > nav > ol > li:nth-child(1){
   margin-left: 0px;
 }
 
-
-
 section.portfolio > nav .bar{
   height: 5px;
   background: #fff;
@@ -453,11 +451,52 @@ section.portfolio > nav .bar.state-3 .bar-inner{
   width:96px;
 }
 
-section.portfolio .works{
-  position: relative;
+section.portfolio .swiper-container {
+  width: 889px;
+  height: 500px;
+  margin-top: 32px;
+  }
+
+section.portfolio .swiper-button-prev{
+  left:-60px;
+  background-color: #fff;
+  width:60px;
+  height: 60px;
+  border-radius: 50%;
 }
 
-section.portfolio .works > .big,
-section.portfolio .works > .small{
-  position: absolute;
+section.portfolio .swiper-button-next{
+  right: -60px;
+  background-color: #fff;
+  width:60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+section.message > h2{
+  text-align: center;
+  color: #3d4451;
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+section.message > ol{
+  max-width: 800px;
+  margin:20px auto;
+  border-top:1px solid #ddd ;
+
+  background:#f4f4f4;
+}
+
+section.message > ol > li{
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  font-family: monospace;
+  font-size: 16px;
+  color:#3d4451;
+}
+
+section.message > #postMessage{
+  color:#3d4451;
 }

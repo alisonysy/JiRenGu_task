@@ -13,7 +13,7 @@ function addInStyle(prev,curr){
         console.log('clear');
         return resolve();
       }
-    },80)
+    },80);
   });
   return promise_style;
 }
@@ -156,7 +156,7 @@ function addMarkdown(curr){
         console.log(2);
         return resolve();
       }
-    }, 80);
+    }, 80)
   })
   return promise_markdown;
 }

@@ -1,0 +1,36 @@
+*{padding: 0;margin: 0;box-sizing: border-box;color:#202020}
+
+body{background: #efefef;}
+.wrapper{
+  height:100vh;
+  display: flex;
+} 
+
+pre#language-css{
+  color: #202020;
+  width:100%;
+  overflow: auto; /*this enables scrollTop method*/
+  height:100vh;
+}
+
+.token.selector{
+  color: #aaa;
+}
+
+.token.property{
+  color: #aaa;
+
+}
+
+div#paperBack > div#paper > p#paperPre{
+  background: none;
+}
+
+/*#code{
+  height: 100vh;
+  overflow: auto;
+}
+
+#paper > .content{
+  padding:16px;
+}*/

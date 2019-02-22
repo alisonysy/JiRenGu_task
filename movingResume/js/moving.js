@@ -163,13 +163,13 @@ function addMarkdown(curr){
 
 var markdown = `
 Name: Alison W.
-Mobile: 1363219222
+Mobile: 1363219xxxx
 Email: 452592978@qq.com
 
 ## Experience
 09/2018 - 12/2018 
 
 ## Project
-[Resume web](https://alisonysy.github.io/JiRenGu_task/index.html)
-[Personal Navigation](https://alisonysy.github.io/JiRenGu_task/nav-demo/index.html)
+[Resume web](https://alisonysy.github.io/practice-project/index.html)
+[Personal Navigation](https://alisonysy.github.io/practice-project/nav-demo/index.html)
 `

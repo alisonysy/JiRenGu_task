@@ -4,7 +4,7 @@
 		<title>Alison Resume</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/css/swiper.min.css">
-		<link rel="stylesheet" href="./a.css">
+		<link rel="stylesheet" href="./css/a.css">
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		<script src="//at.alicdn.com/t/font_1013421_tv1obcvr2em.js"></script>
 		<style type="text/css">
@@ -35,17 +35,7 @@
 									<li class="">c</li>
 								</ul>
 							</li>
-							<li>
-								<a  href="">博客</a>
-								<ul class="submenu">
-										<li class="">a</li>
-										<li class="">b</li>
-										<li class="">c</li>
-								</ul>
-							</li>
-							<li><a href="">日历</a></li>
-							<li><a href="">联系方式</a></li>
-							<li><a href="">其他</a></li>
+							<li><a href="#message">留言板</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -59,7 +49,7 @@
 			<div data-x id="siteAbout" class="userCard">
 				<div class="pictureAndText clearfix">
 					<div class="picture">
-						<img src="./img/profile.jpg" width="299" height="347" alt="profilePic">
+						<img src="./css/img/profile.jpg" width="299" height="347" alt="profilePic">
 					</div>
 					<div class="text">
 							<span class="welcome">Hello
@@ -76,33 +66,33 @@
 								<dt>Email</dt>
 								<dd>452592978@qq.com</dd>
 								<dt>Tel.</dt>
-								<dd>1363219380</dd>
+								<dd>136323xxxxx</dd>
 							</dl>
 					</div>
 				</div>
 				
 						<footer class="media">
-							<a href="">
+							<a href="javascript:;">
 								<svg class="icon" aria-hidden="true">
 									<use xlink:href="#icon-github"></use>
 								</svg>
 							</a>
-							<a href="">
+							<a href="javascript:;">
 									<svg class="icon" aria-hidden="true">
 											<use xlink:href="#icon-jianshu"></use>
 									</svg>
 							</a>
-							<a href="">
+							<a href="javascript:;">
 									<svg class="icon" aria-hidden="true">
 											<use xlink:href="#icon-ttww"></use>
 									</svg>
 							</a>
-							<a href="">
+							<a href="javascript:;">
 									<svg class="icon" aria-hidden="true">
 											<use xlink:href="#icon-weibo"></use>
 									</svg>
 							</a>
-							<a href="">
+							<a href="javascript:;">
 									<svg class="icon" aria-hidden="true">
 											<use xlink:href="#icon-jirengulogozaoqi"></use>
 									</svg>
@@ -111,7 +101,7 @@
 						</footer>
 			</div>
 			<p class="downloadResume-wrapper" >
-				<a href="./resumeSample_task9code.txt" target="_blank" class="downloadResume" download>Download Resume</a>
+				<a href="./css/works/alisonResume.pdf" target="_blank" class="downloadResume" download>Download Resume</a>
 			</p>
 			
 			<p class="selfIntro">
@@ -163,37 +153,14 @@
 		<section data-x id="siteWorks" class="portfolio">
 			
 			<h2>Portfolio</h2>
-			<!--original nav bar
-			<nav>
-				<ol class="clearfix">
-					<li id="portfolio1">All</li>
-					<li id="portfolio2">框架</li>
-					<li id="portfolio3">原生JS&amp;CSS</li>
-				</ol>
-				<div id="portfolioBar" class="bar state-1">
-					<div class="bar-inner"></div>
-				</div>
-			</nav>
-			<script>
-				portfolio1.onclick= function(){
-					portfolioBar.className = 'bar state-1'
-				}
-				portfolio2.onclick= function(){
-					portfolioBar.className = 'bar state-2'
-				}
-				portfolio3.onclick= function(){
-					portfolioBar.className = 'bar state-3'
-				}
-			</script>
-			-->
 			<div class="mySwiper">
 				<div class="swiper-container">
 					<!-- Additional required wrapper -->
 					<div class="swiper-wrapper">
 							<!-- Slides -->
-							<img src="works/myNav.png" class="swiper-slide">
-							<img src="works/asMyCanvas.png" class="swiper-slide">
-							<img src="works/slide.png" class="swiper-slide">
+							<img src="css/works/myNav.png" class="swiper-slide">
+							<img src="css/works/asMyCanvas.png" class="swiper-slide">
+							<img src="css/works/slide.png" class="swiper-slide">
 					</div>
 					<!-- If we need pagination -->
 					<div class="swiper-pagination"></div>
@@ -203,7 +170,7 @@
 				<div class="swiper-button-next"></div>
 			</div>
 		</section>
-		<section class="message">
+		<section data-x	id="message" class="message">
 			<h2>Comments</h2>
 			<ol id="messageList">
 			</ol>
